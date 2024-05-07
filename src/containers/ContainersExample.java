@@ -13,6 +13,18 @@ public class ContainersExample {
 		//   intarrayの内容をintlistに入れ替えて，内容をすべてSystem.out.printlnで表示させてください
 		int[] intarray = {1,2,3,4,5,6,7,8,9,10};
 		List<Integer> intlist = new ArrayList<>();
+		
+		for (int value : intarray) {
+			// intlistには基本型のintではなく、クラス型のIntegerを持っているが
+			// 自動的に変換される
+			intlist.add(value);
+		}
+		
+		System.out.println("1から10まで表示させます START");
+		for (Integer value : intlist) {
+			System.out.println(value);
+		}
+		System.out.println("1から10まで表示させます END");
 
 		// 演習２．１：HashMapの使い方
 		//   下にusersという配列型の変数があります。userMap.putメソッドを呼び出して、
@@ -33,15 +45,28 @@ public class ContainersExample {
 		// userIdとUserオブジェクトのMap
 		Map<Integer, User> userMap = new HashMap<>();
 
+		for (User user : users) {
+			// user_idを取り出す。
+			int userid = user.getId();
+			// HashMapはint型のuser_idとUser型のオブジェクトをセットで格納する
+			userMap.put(userid, user);
+		}
+		
 		// 演習２．２上記userMapから、IDが4と6のユーザを取り出してそれぞれuser4とuser6変数に
 		//   格納してください。user4とuser6をSystem.out.printlnして取り出せていることを確認してください
-		User user4;
-		User user6;
+		User user4 = userMap.get(4);
+		System.out.println(user4);
+		
+		User user6 = userMap.get(6);
+		System.out.println(user6);
 		
 		// 演習３：Collectionsの使い方
 		//   上で宣言されているusers変数をsortedListに内容を移し替えてください。
 		//   
 		List<User> sortedList = new ArrayList<>();
+		for (User userholder : users) {
+			sortedList.add(userholder);
+		}
 		
 		// 演習４：Comparableについて
 		//   UserクラスにcompareToメソッドがありますが、不具合があり、sortしてもIDが大きいものが先頭に来てしまいます。

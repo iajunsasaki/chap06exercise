@@ -36,6 +36,8 @@ public class User implements Serializable, Comparable<User> {
 	
 	// newされた日時
 	private Date creationDate = new Date();
+	
+	private UserType type;
 
 	@Override
 	public String toString() {
@@ -44,9 +46,37 @@ public class User implements Serializable, Comparable<User> {
 		return "ユーザ id[" + this.id + "] 名前[" + this.name + "] 年齢[" + this.age + "] email[" + this.email + "] データ生成日[" + format.format(this.creationDate) + "]";
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public UserType getType() {
+		return type;
+	}
+
 	@Override
 	public int compareTo(User otherUser) {
 		// 演習３で実装
-		return otherUser.id - this.id;
+		// 引き算が逆だった。
+		// this.idとotherUser.idが同じだと0、
+		// this.idの方が大きい場合はプラス、
+		// this.idの方が少ない場合はマイナスになるのが正解
+		return this.id - otherUser.id;
 	}
 }
